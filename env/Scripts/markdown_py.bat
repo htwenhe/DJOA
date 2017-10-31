@@ -1,0 +1,1 @@
+@"d:\pyp\whoa\env\scripts\python.exe" "d:\pyp\whoa\env\Scripts\markdown_py" %*
