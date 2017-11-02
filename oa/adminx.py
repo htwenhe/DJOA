@@ -47,3 +47,5 @@ class TagAdmin(object):
 xadmin.site.register(Post, PostAdmin)
 xadmin.site.register(Category, CategoryAdmin)
 xadmin.site.register(Tag, TagAdmin)
+xadmin.site.register(Leave_class)
+xadmin.site.register(Leave)

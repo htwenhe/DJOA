@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from django.views.decorators.cache import cache_page
-from . import views
+from .views import *
 
 app_name = 'oa'
 
@@ -18,7 +18,9 @@ url(r'^tags/(?P<tag_id>\d+)$', views.TagView.as_view(), name='tag'),
 
 urlpatterns = [
 
-    url(r'^$', views.index, name='index'),
-    url(r'^post/(?P<pk>[0-9]+)/$', views.detail, name='detail'),
-    url(r'hello', views.hello, name='hello')
+    url(r'^$', index, name='index'),
+    url(r'^post/(?P<pk>[0-9]+)/$', detail, name='detail'),
+    url(r'^leave/$',leave),
+    url(r'^leave/post_list_json/$', PostListJson.as_view(), name='post_list_json'),
+    url(r'hello', hello, name='hello')
 ]
