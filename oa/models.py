@@ -119,3 +119,35 @@ class UserInfo2(models.Model):
 
     def __str__(self):
         return self.user_name
+
+class Leave_class(models.Model):
+    name= models.CharField(max_length=256, verbose_name=u"名称")
+    class Meta:
+        db_table = 'leave_class'
+        verbose_name = '请假类别'
+        verbose_name_plural = "请假类别"
+
+    def __str__(self):
+        return self.name
+
+class Leave(models.Model):
+    """用户表"""
+    req_name = models.CharField(max_length=256, verbose_name=u"申请人")
+    req_date = models.DateTimeField(verbose_name=u"申请时间")
+    depart_name = models.CharField(max_length=256,verbose_name=u"部门")
+    position =  models.CharField(max_length=256,  verbose_name=u"职位")
+    req_class =models.ForeignKey(Leave_class,verbose_name=u'请假类别')
+    start_time=models.DateTimeField(verbose_name=u"开始时间")
+    end_time=models.DateTimeField(verbose_name=u"结束时间")
+    resion=models.CharField(max_length=256,  verbose_name=u"请假事由")
+    file_url=models.CharField(max_length=256,  verbose_name=u"上传附件")
+    #审批领导
+
+    class Meta:
+        db_table = 'leave'
+        verbose_name = '请假'
+        verbose_name_plural = "请假"
+
+    def __str__(self):
+        return self.req_name
+
