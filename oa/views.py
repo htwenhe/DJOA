@@ -1,8 +1,11 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
 from django.http import HttpResponse
 from .models import *
 from django.shortcuts import render, get_object_or_404
 import markdown
+import json
+import datetime
 from django_datatables_view.base_datatable_view import BaseDatatableView
 # Create your views here.
 
@@ -27,9 +30,48 @@ def detail(request,pk):
 def leave(request):
     return render(request, 'leave.html')
 
+def LeaveAdd(request):
+    if request.method == 'POST':
+        print(request.POST)
+
+        data = request.POST
+
+        lc = Leave_class.objects.get(id=data['req_class'])
+
+        obj = Leave(req_name=data['req_name'],
+                    req_date=datetime.datetime.now(),
+                    depart_name=data['depart_name'],
+                    position='test',
+                    req_class=lc,
+                    start_time=datetime.datetime.now(),
+                    end_time=datetime.datetime.now(),
+                    resion=data['resion'],
+                    file_url='blank',)
+
+
+        obj.save()
+        result = {'status': 0, 'msg': '请求成功', 'data': [11, 22, 33, 44]}  # 假如传人的数据为一字典
+        return HttpResponse(json.dumps(result), content_type='application/json')
+
+
+
 def hello(request):
     return HttpResponse('hello dog')
 
+def AuditPersonJson(request):
+    response_data = [{'optionValue':'0','optionDisplay':'项目经理A'},
+                     {'optionValue':'1','optionDisplay':'项目经理B'},
+                     {'optionValue':'2','optionDisplay': '项目经理C'}]
+
+    return HttpResponse(json.dumps(response_data), content_type="application/json")
+
+def ReqClassListJson(request):
+    response_data = []
+    leave_class_list = Leave_class.objects.all().order_by('id')
+    for leav_class in leave_class_list:
+        response_data.append({'optionValue':leav_class.id,'optionDisplay':leav_class.name})
+
+    return HttpResponse(json.dumps(response_data), content_type="application/json")
 
 
 class PostListJson(BaseDatatableView):
