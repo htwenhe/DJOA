@@ -48,6 +48,7 @@ def LeaveAdd(request):
                     resion=data['resion'],
                     file_url='blank',)
 
+
         obj.save()
         result = {'status': 0, 'msg': '请求成功', 'data': [11, 22, 33, 44]}  # 假如传人的数据为一字典
         return HttpResponse(json.dumps(result), content_type='application/json')
