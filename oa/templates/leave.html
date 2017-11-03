@@ -1,6 +1,9 @@
 ﻿{% extends 'base.html' %}
 {% load staticfiles %}
 {% load oa_tags %}
+{% block hander %}
+    <script src="{% static 'js/jquery.validate.min.js'%}"></script>
+{% endblock hander %}
 {% block main %}
 				<div class="main-content">
 					<div class="breadcrumbs" id="breadcrumbs">
@@ -78,140 +81,142 @@
 										</div>
 									</div>
 								</div>
-                                <div id="modal-form" class="modal" tabindex="-1">
-									<div class="modal-dialog">
-                                        <form class="form-horizontal" role="form">
-										    <div class="modal-content">
-											<div class="modal-header">
-												<button type="button" class="close" data-dismiss="modal">&times;</button>
-												<h4 class="blue bigger">请假</h4>
-											</div>
-											<div class="modal-body overflow-visible">
-                                                <div class="col-xs-12">
-                                                        <div class="form-group">
-                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 申请人 </label>
-
-                                                            <div class="col-sm-9">
-                                                                <input type="text" id="id_req_name" name="req_name" placeholder="申请人" class="col-xs-10 col-sm-5" />
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="space-4"></div>
-                                                        <div class="form-group">
-                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 申请时间 </label>
-
-                                                            <div class="input-group col-sm-4">
-                                                                <input class="form-control date-picker" id="id-date-picker-1" data-date-format="yyyy-mm-dd" type="text">
-                                                                <span class="input-group-addon">
-                                                                    <i class="icon-calendar bigger-110"></i>
-                                                                </span>
-                                                            </div>
-                                                            <div class="input-group col-sm-4  bootstrap-timepicker">
-                                                                <input id="timepicker1" type="text" class="form-control time-picker" />
-                                                                <span class="input-group-addon">
-                                                                    <i class="icon-time bigger-110"></i>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="space-4"></div>
-                                                        <div class="form-group">
-                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 部门 </label>
-
-                                                            <div class="col-sm-9">
-                                                                <input type="text" id="id_req_name" name="req_name" placeholder="部门" class="col-xs-10 col-sm-5" />
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="space-4"></div>
-                                                        <div class="form-group">
-                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 请假类别 </label>
-                                                            <div class="col-sm-9">
-                                                                <select class="form-control" id="id-req-class">
-                                                                </select>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="space-4"></div>
-                                                        <div class="form-group">
-                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 开始时间 </label>
-
-                                                            <div class="input-group col-sm-4">
-                                                                <input class="form-control date-picker" id="id-date-picker-2" data-date-format="yyyy-mm-dd" type="text">
-                                                                <span class="input-group-addon">
-                                                                    <i class="icon-calendar bigger-110"></i>
-                                                                </span>
-                                                            </div>
-                                                            <div class="input-group col-sm-4  bootstrap-timepicker">
-                                                                <input id="timepicker2" type="text" class="form-control time-picker" />
-                                                                <span class="input-group-addon">
-                                                                    <i class="icon-time bigger-110"></i>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="space-4"></div>
-                                                        <div class="form-group">
-                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 结束时间 </label>
-
-                                                            <div class="input-group col-sm-4">
-                                                                <input class="form-control date-picker" id="id-date-picker-3" data-date-format="yyyy-mm-dd" type="text">
-                                                                <span class="input-group-addon">
-                                                                    <i class="icon-calendar bigger-110"></i>
-                                                                </span>
-                                                            </div>
-                                                            <div class="input-group col-sm-4  bootstrap-timepicker">
-                                                                <input id="timepicker3" type="text" class="form-control time-picker" />
-                                                                <span class="input-group-addon">
-                                                                    <i class="icon-time bigger-110"></i>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="space-4"></div>
-                                                        <div class="form-group">
-                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 原因 </label>
-                                                            <div class="col-sm-9">
-                                                                <textarea class="form-control" id="form-field-8" placeholder="原因"></textarea>
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="space-4"></div>
-                                                        <div class="form-group">
-                                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 审批人 </label>
-                                                            <div class="col-sm-9">
-                                                                <select class="form-control" id="id-audit-person">
-
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-											</div>
-
-											<div class="modal-footer">
-												<button class="btn btn-sm" data-dismiss="modal">
-													<i class="icon-remove"></i>
-													取消
-												</button>
-
-												<button class="btn btn-sm btn-primary" id="btn-ok">
-													<i class="icon-ok"></i>
-													保存
-												</button>
-
-                                                <button class="btn btn-sm btn-success">
-													<i class="icon-ok"></i>
-													保存并提交
-												</button>
-											</div>
-                                            </div>
-                                        </form>
-                                    </div>
-
-						</div><!-- /.row -->
+						    </div>
+                        </div><!-- /.row -->
 					</div><!-- /.page-content -->
 				</div><!-- /.main-content -->
+                <div id="modal-form" class="modal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <form class="form-horizontal" id="form-new-leave" role="form"  >
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="blue bigger">请假</h4>
+                            </div>
+                            <div class="modal-body overflow-visible">
+                                <div class="col-xs-12">
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="req_name"> 申请人 </label>
+
+                                            <div class="col-sm-9">
+                                                <input type="text" id="id_req_name" name="req_name" placeholder="申请人" class="col-xs-10 col-sm-5" />
+                                            </div>
+                                        </div>
+
+                                        <div class="space-4"></div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 申请时间 </label>
+
+                                            <div class="input-group col-sm-4">
+                                                <input class="form-control date-picker" id="id_req_date_0" name="req_date_0" data-date-format="yyyy-mm-dd" type="text">
+                                                <span class="input-group-addon">
+                                                    <i class="icon-calendar bigger-110"></i>
+                                                </span>
+                                            </div>
+                                            <div class="input-group col-sm-4  bootstrap-timepicker">
+                                                <input id="id_req_date_1" name="req_date_1" type="text" class="form-control time-picker" />
+                                                <span class="input-group-addon">
+                                                    <i class="icon-time bigger-110"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="space-4"></div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 部门 </label>
+
+                                            <div class="col-sm-9">
+                                                <input type="text" id="id_depart_name" name="depart_name" placeholder="部门" class="col-xs-10 col-sm-5" />
+                                            </div>
+                                        </div>
+
+                                        <div class="space-4"></div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 请假类别 </label>
+                                            <div class="col-sm-9">
+                                                <select class="form-control " id="id_req_class" name="req_class">
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="space-4"></div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 开始时间 </label>
+
+                                            <div class="input-group col-sm-4">
+                                                <input class="form-control date-picker" id="id_start_time_0" name="start_time_0" data-date-format="yyyy-mm-dd" type="text">
+                                                <span class="input-group-addon">
+                                                    <i class="icon-calendar bigger-110"></i>
+                                                </span>
+                                            </div>
+                                            <div class="input-group col-sm-4  bootstrap-timepicker">
+                                                <input id="id_start_time_1" name="start_time_1" type="text" class="form-control time-picker" />
+                                                <span class="input-group-addon">
+                                                    <i class="icon-time bigger-110"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="space-4"></div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 结束时间 </label>
+
+                                            <div class="input-group col-sm-4">
+                                                <input class="form-control date-picker" id="id_end_time_0" name="end_time_0" data-date-format="yyyy-mm-dd" type="text">
+                                                <span class="input-group-addon">
+                                                    <i class="icon-calendar bigger-110"></i>
+                                                </span>
+                                            </div>
+                                            <div class="input-group col-sm-4  bootstrap-timepicker">
+                                                <input id="id_end_time_1" name="end_time_1" type="text" class="form-control time-picker" />
+                                                <span class="input-group-addon">
+                                                    <i class="icon-time bigger-110"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="space-4"></div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="id_resion"> 原因 </label>
+                                            <div class="col-sm-9">
+                                                <textarea class="form-control" id="id_resion" name="resion" placeholder="原因"></textarea>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="space-4"></div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label no-padding-right" for="id_audit_person"> 审批人 </label>
+                                            <div class="col-sm-9">
+                                                <select class="form-control" id="id_audit_person" name="audit_person">
+                                                    <option name="aa">aa</option>
+                                                    <option name="bb">bb</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button class="btn btn-sm" data-dismiss="modal">
+                                    <i class="icon-remove"></i>
+                                    取消
+                                </button>
+
+                                <button class="btn btn-sm btn-primary" id="btn-ok">
+                                    <i class="icon-ok"></i>
+                                    保存
+                                </button>
+
+                                <button class="btn btn-sm btn-success">
+                                    <i class="icon-ok"></i>
+                                    保存并提交
+                                </button>
+                            </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
 		<script src="{% static 'js/jquery.dataTables.min.js'%}"></script>
 		<script src="{% static 'js/jquery.dataTables.bootstrap.js'%}"></script>
 
@@ -232,6 +237,8 @@
                         ]
 				} );
 
+
+
 				$('.date-picker').datepicker({autoclose:true}).next().on(ace.click_event, function(){
 					$(this).prev().focus();
 				});
@@ -239,29 +246,92 @@
 				$('#btn-new-leave').on('click', function() {
 
                     $.getJSON("/oa/leave/audit_person_json",{id: '01', ajax: 'true'}, function(j){
-                    var options = '';
-                    for (var i = 0; i < j.length; i++) {
-                    options += '<option value="' + j[i].optionValue + '">' + j[i].optionDisplay + '</option>';
-                    }
-                    $("select#id-audit-person").html(options);
+                        var options = '';
+                        for (var i = 0; i < j.length; i++) {
+                        options += '<option value="' + j[i].optionValue + '">' + j[i].optionDisplay + '</option>';
+                        }
+                        $("select#id_audit_person").html(options);
 
                     });
-                    $.getJSON("/oa/leave/req_class_list_json",{id: '01', ajax: 'true'}, function(j){
-                    var options = '';
-                    for (var i = 0; i < j.length; i++) {
-                    options += '<option value="' + j[i].optionValue + '">' + j[i].optionDisplay + '</option>';
-                    }
-                    $("select#id-req-class").html(options);
+                        $.getJSON("/oa/leave/req_class_list_json",{id: '01', ajax: 'true'}, function(j){
+                        var options = '';
+                        for (var i = 0; i < j.length; i++) {
+                        options += '<option value="' + j[i].optionValue + '">' + j[i].optionDisplay + '</option>';
+                        }
+                        $("select#id_req_class").html(options);
 
                     });
-
 
                  });
 
-				$('#btn-ok').on('click', function() {
+                $('#form-new-leave').validate({
+                    errorElement: 'div',
+                    errorClass: 'help-block',
+                    focusInvalid: false,
+                    rules: {
+                        req_name: {
+                            required: true,
+                            maxlength: 5
+                        },
+                        depart_name:'required',
+                        req_date_0:'required',
+                        req_date_1:'required',
+                        req_class:'required',
+                        start_time_0:'required',
+                        start_time_1:'required',
+                        end_time_0:'required',
+                        end_time_1:'required',
+                        resion:'required',
+                        audit_person:'required',
+                    },
+                    messages: {
+                        req_name: {
+                            required: "请输入申请人.",
+                        },
+                        depart_name: {
+                            required: "请输入部门.",
+                        },
 
+                    },
+
+
+                    highlight: function (e) {
+                        $(e).closest('.form-group').removeClass('has-info').addClass('has-error');
+                    },
+
+                    success: function (e) {
+                        $(e).closest('.form-group').removeClass('has-error').addClass('has-info');
+                        $(e).remove();
+                    },
+
+                    errorPlacement: function (error, element) {
+                        if(element.is(':checkbox') || element.is(':radio')) {
+                            var controls = element.closest('div[class*="col-"]');
+                            if(controls.find(':checkbox,:radio').length > 1) controls.append(error);
+                            else error.insertAfter(element.nextAll('.lbl:eq(0)').eq(0));
+                        }
+
+                        else error.insertAfter(element.parent());
+                    },
+
+                    submitHandler: function (form) {
+                        $.ajax({
+                            type: 'post',
+                            url: '/oa/leave/add/',
+                            datatype:'json',
+                            data: $('#form-new-leave').serialize(),
+                            success: function (data) {
+                                $('#modal-form').modal('hide');
+                                $('#sample-table-2').dataTable().fnDraw(false);
+                            }
+                        })
+                    },
+                    invalidHandler: function (form) {
+                    }
 
                 });
+
+
 				$('.time-picker').timepicker({
 					minuteStep: 1,
 					showSeconds: true,
