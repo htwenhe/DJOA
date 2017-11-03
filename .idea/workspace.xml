@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5e75455a-acb6-43e3-a159-880bc5de4b62" name="Default" comment="json填充select表单&#10;modal框，时间，日前控件&#10;">
+    <list default="true" id="5e75455a-acb6-43e3-a159-880bc5de4b62" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,7 +41,7 @@
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
-                <element signature="e#9006#9012#0#XML" expanded="true" />
+                <element signature="e#9103#9109#0#XML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -651,7 +651,14 @@
       <option name="project" value="LOCAL" />
       <updated>1509709251553</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="json填充select表单&#10;modal框，时间，日前控件&#10;">
+      <created>1509709305974</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1509709305974</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TodoView">
@@ -696,9 +703,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="TEST" />
     <MESSAGE value="jquery datatable and view" />
-    <MESSAGE value="json填充select表单&#10;modal框，时间，日前控件&#10;" />
     <MESSAGE value="json填充select表单&#10;modal框，时间，日前控件&#10;ajax 提交表单，存储，返回，关闭，刷新。&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="json填充select表单&#10;modal框，时间，日前控件&#10;ajax 提交表单，存储，返回，关闭，刷新。&#10;" />
+    <MESSAGE value="json填充select表单&#10;modal框，时间，日前控件&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="json填充select表单&#10;modal框，时间，日前控件&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1100,7 +1107,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#9006#9012#0#XML" expanded="true" />
+            <element signature="e#9103#9109#0#XML" expanded="true" />
           </folding>
         </state>
       </provider>
