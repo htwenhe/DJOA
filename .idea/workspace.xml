@@ -41,7 +41,7 @@
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
-                <element signature="e#9103#9109#0#XML" expanded="true" />
+                <element signature="e#9065#9071#0#XML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -658,7 +658,14 @@
       <option name="project" value="LOCAL" />
       <updated>1509709305974</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="json填充select表单&#10;modal框，时间，日前控件&#10;">
+      <created>1509709312778</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1509709312778</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1107,7 +1114,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#9103#9109#0#XML" expanded="true" />
+            <element signature="e#9065#9071#0#XML" expanded="true" />
           </folding>
         </state>
       </provider>
