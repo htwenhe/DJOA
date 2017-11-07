@@ -3,6 +3,7 @@
 {% load oa_tags %}
 {% block hander %}
     <script src="{% static 'js/jquery.validate.min.js'%}"></script>
+
 {% endblock hander %}
 {% block main %}
 				<div class="main-content">
@@ -218,8 +219,18 @@
                         </form>
                     </div>
                 </div>
+
+            <div id="app">
+                {% verbatim %}
+                <p>{{ message }}</p>
+                {% endverbatim %}
+            </div>
+
+
+
 		<script src="{% static 'js/jquery.dataTables.min.js'%}"></script>
 		<script src="{% static 'js/jquery.dataTables.bootstrap.js'%}"></script>
+        <script src="{% static 'js/bootbox.min.js'%}"></script>
 
         <script type="text/javascript">
 
@@ -230,17 +241,29 @@
                 console.info("toEdit->"+pk);
             }
             function toDel(pk){
-                console.info("toDel->"+pk);
-                $.ajax({
-                    url: '/oa/leave/del/'+pk,
-                    success: function (data) {
-                        $('#sample-table-2').dataTable().fnDraw(false);
+                bootbox.confirm("确定要删除吗?", function(result) {
+                    if (result) {
+                        $.ajax({
+                        url: '/oa/leave/del/'+pk,
+                        success: function (data) {
+                            $('#sample-table-2').dataTable().fnDraw(false);
+                            }
+                        })
+                        //
                     }
                 })
+                console.info("toDel->"+pk);
+
 
             }
 
 			jQuery(function($) {
+			    var app = new Vue({
+                      el: '#app',
+                      data: {
+                        message: 'Hello Vue!'
+                      }
+                })
 
 			    var oTable1 = $('#sample-table-2').dataTable( {
                     "bFilter": false,

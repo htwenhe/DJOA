@@ -137,4 +137,18 @@ class PostListJson(BaseDatatableView):
                 qs_params = qs_params | q if qs_params else q
             qs = qs.filter(qs_params)
         return qs
+
+@require_http_methods(["GET"])
+def show_books(request):
+    response = {}
+    try:
+        books = Book.objects.filter()
+        response['list']  = json.loads(serializers.serialize("json", books))
+        response['msg'] = 'success'
+        response['error_num'] = 0
+    except  Exception,e:
+        response['msg'] = str(e)
+        response['error_num'] = 1
+
+    return JsonResponse(response)
 '''
