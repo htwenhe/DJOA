@@ -54,7 +54,6 @@
 															</label>
 														</th>
 														-->
-
 														<th>姓名</th>
 														<th>日期</th>
                                                         <th>部门</th>
@@ -62,6 +61,8 @@
                                                         <th>原因</th>
                                                         <th>开始时间</th>
                                                         <th>结束时间</th>
+                                                        <th>操作</th>
+
                                                         <!--
 														<th class="hidden-480">Clicks</th>
 
@@ -221,18 +222,47 @@
 		<script src="{% static 'js/jquery.dataTables.bootstrap.js'%}"></script>
 
         <script type="text/javascript">
+
+            function toLookUP(pk){
+                console.info("lookUP->"+pk);
+            }
+            function toEdit(pk){
+                console.info("toEdit->"+pk);
+            }
+            function toDel(pk){
+                console.info("toDel->"+pk);
+                $.ajax({
+                    url: '/oa/leave/del/'+pk,
+                    success: function (data) {
+                        $('#sample-table-2').dataTable().fnDraw(false);
+                    }
+                })
+
+            }
+
 			jQuery(function($) {
 
 			    var oTable1 = $('#sample-table-2').dataTable( {
-				    'select': true,
+                    "bFilter": false,
                     "processing": true,
                     "serverSide": true,
                     "ajax":"/oa/leave/post_list_json",
                      "columnDefs": [
-                        {
-                            "targets": [ 1 ],
-                            "visible": false,
-                            "searchable": false
+
+                         {
+                            "targets": [ 7 ],
+                            "orderable": false,
+                             "render": function ( data, type, row ) {
+                                    //alert('data=>'+data+'\n type=>'+type+'\n row=>'+row);
+                                 var out = '';
+                                 out+='<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">';
+                                 out+='<a class="blue"  href="javascript:void(0);" onclick=toLookUP('+data+')><i class="icon-zoom-in bigger-130"></i></a>' ;
+                                 out+='<a class="green" href="javascript:void(0);" onclick=toEdit('+data+')><i class="icon-pencil bigger-130"></i></a>';
+                                 out+='<a class="red" href="javascript:void(0);" onclick=toDel('+data+')><i class="icon-trash bigger-130"></i></a>';
+                                 out+='</div>';
+
+                                 return out;
+                                 },
                         }
                         ]
 				} );

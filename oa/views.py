@@ -5,7 +5,7 @@ from .models import *
 from django.shortcuts import render, get_object_or_404
 import markdown
 import json
-import datetime
+from datetime import *
 from django_datatables_view.base_datatable_view import BaseDatatableView
 # Create your views here.
 
@@ -30,6 +30,17 @@ def detail(request,pk):
 def leave(request):
     return render(request, 'leave.html')
 
+def LeaveLookup(request,pk):
+
+    pass
+def LeaveDel(request,pk):
+    Leave.objects.filter(id=pk).delete()
+    result = {'status': 0, 'msg': '请求成功', 'data': pk}
+    return HttpResponse(json.dumps(result), content_type='application/json')
+    pass
+def LeaveEdit(request,pk):
+    pass
+
 def LeaveAdd(request):
     if request.method == 'POST':
         print(request.POST)
@@ -37,20 +48,20 @@ def LeaveAdd(request):
         data = request.POST
 
         lc = Leave_class.objects.get(id=data['req_class'])
-
+        #后续：字段多的情况可以考虑直接将JSON转化成对象
         obj = Leave(req_name=data['req_name'],
-                    req_date=datetime.datetime.now(),
+                    req_date=datetime.strptime('{0} {1}'.format(data['req_date_0'],data['req_date_1']), "%Y-%m-%d %H:%M:%S") ,
                     depart_name=data['depart_name'],
                     position='test',
                     req_class=lc,
-                    start_time=datetime.datetime.now(),
-                    end_time=datetime.datetime.now(),
+                    start_time=datetime.strptime('{0} {1}'.format(data['start_time_0'],data['start_time_1']), "%Y-%m-%d %H:%M:%S") ,
+                    end_time=datetime.strptime('{0} {1}'.format(data['end_time_0'],data['end_time_1']), "%Y-%m-%d %H:%M:%S") ,
                     resion=data['resion'],
                     file_url='blank',)
 
 
         obj.save()
-        result = {'status': 0, 'msg': '请求成功', 'data': [11, 22, 33, 44]}  # 假如传人的数据为一字典
+        result = {'status': 0, 'msg': '请求成功', 'data':''}
         return HttpResponse(json.dumps(result), content_type='application/json')
 
 
@@ -79,7 +90,7 @@ class PostListJson(BaseDatatableView):
     model = Leave
 
     # define the columns that will be returned
-    columns = ['req_name', 'req_date','depart_name','req_class','resion','start_time','end_time']
+    columns = ['req_name', 'req_date','depart_name','req_class','resion','start_time','end_time','op']
 
 
     # define column names that will be used in sorting
@@ -96,6 +107,14 @@ class PostListJson(BaseDatatableView):
         # We want to render user as a custom column
         if column == 'req_class':
             return '{0}'.format(row.req_class.name)
+        elif column == 'req_date':
+            return '{0}'.format(row.req_date.strftime("%Y-%m-%d %H:%M:%S"))
+        elif column == 'start_time':
+            return '{0}'.format(row.start_time.strftime("%Y-%m-%d %H:%M:%S"))
+        elif column == 'end_time':
+            return '{0}'.format(row.end_time.strftime("%Y-%m-%d %H:%M:%S"))
+        elif column == 'op':
+            return row.id
         else:
             return super(PostListJson,self).render_column(row, column)
     '''
