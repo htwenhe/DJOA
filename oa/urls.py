@@ -21,7 +21,7 @@ urlpatterns = [
     url(r'^$', index, name='index'),
     url(r'^post/(?P<pk>[0-9]+)/$', detail, name='detail'),
     url(r'^leave/$',leave),
-    url(r'^leave/add/$', LeaveAdd),
+    url(r'^leave/save/$', LeaveSave),
     url(r'^leave/lookup/(?P<pk>[0-9]+)/$', LeaveLookup),
     url(r'^leave/del/(?P<pk>[0-9]+)/$', LeaveDel),
     url(r'^leave/edit/(?P<pk>[0-9]+)/$', LeaveEdit),

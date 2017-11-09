@@ -1,0 +1,123 @@
+template {
+	display: none;
+}
+
+#app {
+	margin: 0 auto;
+	max-width: 700px;
+}
+.dialog {
+	width: 480px;
+	position: fixed;
+	left: 50%;
+	top: 1.8em;
+	transform: translateX(-50%);
+	z-index: 2000;
+	visibility: hidden;
+	backface-visibility: hidden;
+	perspective: 1300px;
+}
+
+.dialog-active {
+	visibility: visible;
+}
+
+.dialog-active .dialog-content {
+	opacity: 1;
+	transform: rotateY(0);
+}
+
+.dialog-active ~ .dialog-overlay {
+	opacity: 1;
+	visibility: visible;
+}
+
+.dialog-content {
+	border-radius: 3px;
+	background: #fff;
+	overflow: hidden;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+	transition: .5s ease-in-out;
+	opacity: 0;
+	transform-style: preserve-3d;
+	transform: rotateY(-70deg);
+}
+
+.dialog-header {
+	background: #0090d3;
+	color: #fff;
+}
+
+.dialog-title {
+	margin: 0;
+	font-size: 1.8em;
+	text-align: center;
+	font-weight: 200;
+	line-height: 1.8em;
+}
+
+.dialog-body {
+	padding: 2em;
+}
+
+.dialog-footer {
+	margin: 0 2em;
+	padding: 1em 0;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dialog-overlay {
+	content: "";
+	position: fixed;
+	visibility: hidden;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1000;
+	opacity: 0;
+	background: rgba(0, 0, 0, 0.5);
+	transition: all .6s;
+}
+
+.close {
+	display: inline-block;
+	width: 2rem;
+	height: 2rem;
+	position: absolute;
+	top: .5rem;
+	right: .5rem;
+	transition: .8s ease all;
+	-moz-transition: .8s ease all;
+	-webkit-transition: .8s ease all;
+	border: none;
+	border-radius: 3px;
+	color: #333;
+	text-decoration: none;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.close:hover {
+	transition: .8s ease all;
+	-moz-transition: .8s ease all;
+	-webkit-transition: .8s ease all;
+}
+
+.close .iconfont {
+	font-size: 2rem;
+	color: #fff;
+}
+
+.rotate {
+	cursor: pointer;
+}
+
+.rotate:hover {
+	transform: rotate(360deg);
+	-moz-transform: rotate(360deg);
+	-webkit-transform: rotate(360deg);
+	transition: transform 1.0s ease all;
+	-moz-transition: -moz-transform 1.0s ease all;
+	-webkit-transition: -webkit-transform 1.0s ease all;
+}
