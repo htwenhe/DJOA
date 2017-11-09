@@ -2,6 +2,9 @@ from django.utils import timezone
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.six import python_2_unicode_compatible
+from django.contrib.auth.models import User, Group
+#from rest_framework import serializers
+
 
 # Create your models here.
 class Article(models.Model):
@@ -150,4 +153,10 @@ class Leave(models.Model):
 
     def __str__(self):
         return self.req_name
+'''
+class LeaveSerializer(serializers.HyperlinkedModelSerializer):
 
+    class Meta:
+        model = Leave
+        fields = ('req_name', 'req_date', 'depart_name', 'position','resion')
+'''
